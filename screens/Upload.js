@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 
 
-
-export function Sobre({navigation}) {
+export function Upload({navigation}) {
     return (
       <KeyboardAvoidingView style={styles.background}>
       <View>

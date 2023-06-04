@@ -23,7 +23,7 @@ export function Login({navigation}) {
             style={{ width: 100, height: 100 }}
           />
           <Text style={styles.titulo} variant="headlineLarge">
-            cuidaMama
+            MamaCare
           </Text>
         </View>
   
@@ -42,7 +42,7 @@ export function Login({navigation}) {
             onChangeText={() => {}}
           />
   
-          <Pressable style={styles.botaoEntrar} onPress={() => navigation.navigate('Sobre')}>
+          <Pressable style={styles.botaoEntrar} onPress={() => navigation.navigate('Upload')}>
             <Text style={styles.textoBotaoEntrarOuCadastrar}>entrar</Text>
           </Pressable>
   

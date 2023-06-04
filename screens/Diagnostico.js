@@ -10,7 +10,7 @@ import {
 
 
 
-export function Sobre({navigation}) {
+export function Diagnostico({navigation}) {
     return (
       <KeyboardAvoidingView style={styles.background}>
       <View>
