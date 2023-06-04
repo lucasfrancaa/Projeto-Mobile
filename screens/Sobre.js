@@ -13,7 +13,7 @@ import {
 export function Sobre({navigation}) {
     return (
       <KeyboardAvoidingView style={styles.background}>
-      <View>
+      <View style={styles.container}>
       <Text style={styles.titulo}>SOBRE NÓS</Text>
       <Text style={styles.texto}>O cuidaMama é um aplicativo para etc e tem
       a finalidade de etc. Surgiu a partir da ideia de três estudantes
@@ -34,6 +34,18 @@ export function Sobre({navigation}) {
   }
   
   const styles = StyleSheet.create({
+    background: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#FFFFFF',
+    },
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '90%',
+    },
     titulo: {
       fontSize: 40,
       fontWeight: "bold",
@@ -45,7 +57,8 @@ export function Sobre({navigation}) {
       marginTop: 20,
       marginLeft: 15,
       marginRight: 15,
-      textAlign: 'justify'
+      textAlign: 'justify',
+      marginBottom: 30,
     },
     botaoEntrar: {
       backgroundColor: '#7e325f',
@@ -55,9 +68,6 @@ export function Sobre({navigation}) {
       justifyContent: 'center',
       borderRadius: 7,
       marginBottom: 10,
-      marginTop: 20,
-      marginLeft: 15,
-      marginRight: 15,
     },
   
     botaoCriarConta: {
@@ -69,7 +79,15 @@ export function Sobre({navigation}) {
       borderRadius: 7,
       marginBottom: 10,
       marginTop: 10,
-      marginLeft: 15,
+      marginLeft: 18,
       marginRight: 15,
     },
+    textoBotaoEntrarOuCadastrar:{
+      marginBottom: 0,
+      color: '#fff',
+      fontSize: 15,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 7
+  },
   });
