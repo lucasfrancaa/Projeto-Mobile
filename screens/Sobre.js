@@ -15,11 +15,13 @@ export function Sobre({navigation}) {
       <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
       <Text style={styles.titulo}>SOBRE NÓS</Text>
-      <Text style={styles.texto}>O cuidaMama é um aplicativo para etc e tem
-      a finalidade de etc. Surgiu a partir da ideia de três estudantes
+      <Text style={styles.texto}>O MamaCare é um aplicativo criado para que a/o paciente
+      possa perceber a presença de um possível nódulo e se o mesmo é benigno ou malígno,
+      podendo assim ter uma certa prevenção e buscar ajuda médica o quanto antes.
+      A ideia surgiu a partir de quatro estudantes
       que precisavam desenvolver um aplicativo para as disciplinas de
       Inteligência Artificial, Programação para Dispositivos Móveis e 
-      Aplicação Orientada a Serviços. O intuito é etc etc.. </Text>
+      Aplicação Orientada a Serviços.</Text>
       
       <Pressable style={styles.botaoEntrar} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.textoBotaoEntrarOuCadastrar}>login</Text>
