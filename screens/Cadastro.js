@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,10 +7,75 @@ import {
   Image,
   Button,
   Pressable,
-  Text
+  Text, 
+  Keyboard, 
+  Alert
 } from 'react-native';
+import api from '../api';
 
 export function Cadastro({navigation}) {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const handleSignup = async () => {
+  //   try {
+  //     const response = await axios.post('http://localhost:8080/users', {
+  //       name,
+  //       email,
+  //       phone,
+  //       password,
+  //     });
+
+  //     if (email && password && name && phone && response.status === 200) {
+  //       Alert.alert('Success', 'User registered in successfully');
+  //     } else {
+  //       Alert.alert('Error', 'Failed to register user');
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     Alert.alert('Error', 'An error occurred');
+  //   }
+  // };
+
+  const handleSignUp = async () => {
+    try {
+      const response = await api.post('/users', {
+        name,
+        email,
+        phone,
+        password,
+      });
+
+      if (response.status === 200) {
+        Alert.alert('Success', 'User registered in successfully');
+      } else {
+        Alert.alert('Error', 'Failed to register user');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'An error occurred');
+    }
+  };
+
+  // const [inputValue, setInputValue] = useState('');
+
+  // const handleTextChange = (text) => {
+  //   const numericValue = text.replace(/[^0-9]/g, '');
+  //   setInputValue(numericValue);
+  // };
+
+  const handleSignupAndNavigation = () => {
+    handleSignUp(); 
+    navigation.navigate('Login'); 
+  };
+
+  const handleInputSubmit = () => {
+    Keyboard.dismiss();
+  };
+
     return (
   
       <KeyboardAvoidingView style={styles.background}>
@@ -20,38 +85,42 @@ export function Cadastro({navigation}) {
             style={styles.TextInput}
             placeholder="nome"
             autoCorrect={false}
-            onChangeText={() => {}}
-        />
-  
-        <TextInput
-            style={styles.TextInput}
-            placeholder="cpf"
-            autoCorrect={false}
-            onChangeText={() => {}}
+            value={name}
+            onChangeText={setName}
+            onSubmitEditing={handleInputSubmit}
         />
 
         <TextInput
             style={styles.TextInput}
-            placeholder="data de nascimento"
+            placeholder="telefone"
             autoCorrect={false}
-            onChangeText={() => {}}
+            value={phone}
+            onChangeText={setPhone}
+            keyboardType="numeric"
+            textInputProps={{ numericOnly: true }}
+            onSubmitEditing={handleInputSubmit}
         />
 
         <TextInput
             style={styles.TextInput}
             placeholder="e-mail"
             autoCorrect={false}
-            onChangeText={() => {}}
+            value={email}
+            onChangeText={setEmail}
+            onSubmitEditing={handleInputSubmit}
           />
 
-<TextInput
+        <TextInput
             style={styles.TextInput}
             placeholder="senha"
             autoCorrect={false}
-            onChangeText={() => {}}
+            value={password}
+            onChangeText={setPassword}
+            onSubmitEditing={handleInputSubmit}
+            secureTextEntry
           />
   
-          <Pressable style={styles.botaoCriarConta} onPress={() => navigation.navigate('Login')}>
+          <Pressable style={styles.botaoCriarConta} onPress={handleSignupAndNavigation} disabled={!email || !password || !name || !phone}>
             <Text style={styles.textoBotaoCadastrar}>criar conta</Text>
           </Pressable>
         </View>

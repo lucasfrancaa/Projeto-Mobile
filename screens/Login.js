@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,10 +7,62 @@ import {
   Image,
   Button,
   Pressable,
-  Text
+  Text, 
+  Alert, 
+  Keyboard
 } from 'react-native';
+import api from '../api';
 
 export function Login({navigation}) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await axios.post('http://localhost:8080/users/login', {
+  //       email,
+  //       password,
+  //     });
+
+  //     if (email && password && response.status === 200) {
+  //       Alert.alert('Success', 'Logged in successfully');
+  //     } else {
+  //       Alert.alert('Error', 'Please enter email and password');
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     Alert.alert('Error', 'An error occurred');
+  //   }
+  // };
+
+  const handleLogin = async () => {
+    try {
+      const response = await api.post('/users/{id}', {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        Alert.alert('Success', 'User registered in successfully');
+      } else {
+        Alert.alert('Error', 'Failed to register user');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'An error occurred');
+    }
+  };
+
+
+    const handleLoginAndNavigation = () => {
+      handleLogin(); 
+      navigation.navigate('Upload'); 
+    };
+
+    const handleInputSubmit = () => {
+      Keyboard.dismiss();
+    };
+
     return (
   
       <KeyboardAvoidingView style={styles.background}>
@@ -32,17 +84,22 @@ export function Login({navigation}) {
             style={styles.TextInput}
             placeholder="email"
             autoCorrect={false}
-            onChangeText={() => {}}
+            value={email}
+            onChangeText={setEmail}
+            onSubmitEditing={handleInputSubmit}
           />
   
           <TextInput
             style={styles.TextInput}
             placeholder="senha"
             autoCorrect={false}
-            onChangeText={() => {}}
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            onSubmitEditing={handleInputSubmit}
           />
   
-          <Pressable style={styles.botaoEntrar} onPress={() => navigation.navigate('Upload')}>
+          <Pressable style={styles.botaoEntrar} onPress={handleLoginAndNavigation}  disabled={!email || !password}>
             <Text style={styles.textoBotaoEntrarOuCadastrar}>entrar</Text>
           </Pressable>
   
@@ -52,7 +109,7 @@ export function Login({navigation}) {
         </View>
       </KeyboardAvoidingView>
     );
-  }
+  };
   
   const styles = StyleSheet.create({
     background: {
