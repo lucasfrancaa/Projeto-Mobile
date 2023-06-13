@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import useSWR from 'swr';
 
-
 export function Cadastro({navigation}) {
 
   const [name, setName] = useState('');

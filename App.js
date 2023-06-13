@@ -6,7 +6,6 @@ import { Cadastro } from "./screens/Cadastro";
 import { Sobre } from "./screens/Sobre";
 import { TerapiaLista } from "./screens/TerapiaLista";
 
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {

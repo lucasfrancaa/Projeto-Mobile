@@ -4,6 +4,7 @@ import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
 
 export function TerapiaLista({navigation}){
 
+
     const terapeutas =[
     {
         id: '01',
@@ -33,6 +34,11 @@ export function TerapiaLista({navigation}){
 
     return(
         <View>
+            <View style={styles.bemVindo}>
+                <Text>
+                Bem-vindo, ! 
+                </Text>
+            </View>
             <FlatList data={terapeutas} keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <View style={styles.item}><Text style={styles.descricao}>Nome: {item.desc[0]}  Especialidades: {item.desc[1]}</Text>
