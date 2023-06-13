@@ -8,20 +8,15 @@ import {
   Pressable
 } from 'react-native';
 
-
-
 export function Sobre({navigation}) {
     return (
       <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
-      <Text style={styles.titulo}>SOBRE NÓS</Text>
-      <Text style={styles.texto}>O TherapyCare é um aplicativo criado para que a/o paciente
-      possa perceber a presença de um possível nódulo e se o mesmo é benigno ou malígno,
-      podendo assim ter uma certa prevenção e buscar ajuda médica o quanto antes.
-      A ideia surgiu a partir de quatro estudantes
-      que precisavam desenvolver um aplicativo para as disciplinas de
-      Inteligência Artificial, Programação para Dispositivos Móveis e 
-      Aplicação Orientada a Serviços.</Text>
+      <Text style={styles.titulo}>Therapy Care</Text>
+      <Text style={styles.texto}>O Therapy Care é um aplicativo criado para que pessoas 
+      possam buscar por serviço de terapia gratuito, oferecido por profissionais que desejam
+      ajudar quem não tem condições de pagar pelo serviço.
+      </Text>
       
       <Pressable style={styles.botaoEntrar} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.textoBotaoEntrarOuCadastrar}>login</Text>
