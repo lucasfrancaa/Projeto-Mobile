@@ -70,12 +70,12 @@ export function Login({navigation}) {
         <View style={styles.containerLogo}>
           <Image
             source={{
-              uri: 'https://i.imgur.com/pKZDoiX.png',
+              uri: 'https://i.imgur.com/hzerc40.png',
             }}
             style={{ width: 100, height: 100 }}
           />
           <Text style={styles.titulo} variant="headlineLarge">
-            MamaCare
+          therapyCare
           </Text>
         </View>
   
@@ -122,7 +122,7 @@ export function Login({navigation}) {
     containerLogo: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 20,
+      marginTop: 50,
     },
   
     container: {

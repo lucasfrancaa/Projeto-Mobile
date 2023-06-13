@@ -6,6 +6,7 @@ import { Cadastro } from "./screens/Cadastro";
 import { Sobre } from "./screens/Sobre";
 import { Diagnostico } from "./screens/Diagnostico";
 import { Upload } from "./screens/Upload";
+import { TerapiaLista } from "./screens/TerapiaLista";
 
 
 const Stack = createNativeStackNavigator();
@@ -13,12 +14,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Sobre">
+        <Stack.Navigator initialRouteName="TerapiaLista">
           <Stack.Screen
             name="Login"
             component={Login}
             options={{ title: "Login" }}
           />
+          
           <Stack.Screen
             name="Cadastro"
             component={Cadastro}
@@ -28,6 +30,11 @@ export default function App() {
             name="Sobre"
             component={Sobre}
             options={{ title: "Sobre" }}
+          />
+          <Stack.Screen
+            name="TerapiaLista"
+            component={TerapiaLista}
+            options={{ title: "TerapiaLista" }}
           />
           <Stack.Screen
             name="Upload"
