@@ -12,6 +12,7 @@ import {
   Keyboard
 } from 'react-native';
 import api from '../api';
+import axios from 'axios';
 
 export function Login({navigation}) {
 
@@ -70,12 +71,12 @@ export function Login({navigation}) {
         <View style={styles.containerLogo}>
           <Image
             source={{
-              uri: 'https://i.imgur.com/pKZDoiX.png',
+              uri: 'https://postimg.cc/SJ09Tyys',
             }}
             style={{ width: 100, height: 100 }}
           />
           <Text style={styles.titulo} variant="headlineLarge">
-            MamaCare
+            TherapyCare
           </Text>
         </View>
   
@@ -133,7 +134,7 @@ export function Login({navigation}) {
     },
   
     botaoEntrar: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -143,7 +144,7 @@ export function Login({navigation}) {
     },
   
     botaoCriarConta: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',

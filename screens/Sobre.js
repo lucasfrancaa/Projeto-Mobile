@@ -15,7 +15,7 @@ export function Sobre({navigation}) {
       <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
       <Text style={styles.titulo}>SOBRE NÓS</Text>
-      <Text style={styles.texto}>O MamaCare é um aplicativo criado para que a/o paciente
+      <Text style={styles.texto}>O TherapyCare é um aplicativo criado para que a/o paciente
       possa perceber a presença de um possível nódulo e se o mesmo é benigno ou malígno,
       podendo assim ter uma certa prevenção e buscar ajuda médica o quanto antes.
       A ideia surgiu a partir de quatro estudantes
@@ -63,7 +63,7 @@ export function Sobre({navigation}) {
       marginBottom: 30,
     },
     botaoEntrar: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -73,7 +73,7 @@ export function Sobre({navigation}) {
     },
   
     botaoCriarConta: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',

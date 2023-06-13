@@ -12,6 +12,7 @@ import {
   Alert
 } from 'react-native';
 import api from '../api';
+import axios from 'axios';
 
 export function Cadastro({navigation}) {
 
@@ -150,7 +151,7 @@ export function Cadastro({navigation}) {
     },
   
     botaoEntrar: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -160,7 +161,7 @@ export function Cadastro({navigation}) {
     },
   
     botaoCriarConta: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',

@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export function Diagnostico() {
-  const result = 'Seu diagnóstico é:';
+export function Resultado({navigation}) {
+
+  const { prediction } = route.params; 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.resultText}>{result}</Text>
+      <Text style={styles.resultText}>Resultado:</Text>
+      <Text>{prediction}</Text>
     </View>
   );
 }
