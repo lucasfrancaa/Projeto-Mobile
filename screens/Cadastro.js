@@ -11,7 +11,7 @@ import {
   Keyboard, 
   Alert
 } from 'react-native';
-import api from '../api';
+import useSWR from 'swr';
 
 export function Cadastro({navigation}) {
 
@@ -20,52 +20,25 @@ export function Cadastro({navigation}) {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleSignup = async () => {
-  //   try {
-  //     const response = await axios.post('http://localhost:8080/users', {
-  //       name,
-  //       email,
-  //       phone,
-  //       password,
-  //     });
-
-  //     if (email && password && name && phone && response.status === 200) {
-  //       Alert.alert('Success', 'User registered in successfully');
-  //     } else {
-  //       Alert.alert('Error', 'Failed to register user');
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     Alert.alert('Error', 'An error occurred');
-  //   }
-  // };
-
+ const { mutate } = useSWR('https://java-unicap-production.up.railway.app/users');
+ 
   const handleSignUp = async () => {
     try {
-      const response = await api.post('/users', {
-        name,
-        email,
-        phone,
-        password,
+      await fetch('https://java-unicap-production.up.railway.app/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, phone, password }),
       });
 
-      if (response.status === 200) {
-        Alert.alert('Success', 'User registered in successfully');
-      } else {
-        Alert.alert('Error', 'Failed to register user');
-      }
+      Alert.alert('Success', 'User registered successfully');
+      mutate(); 
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'An error occurred');
+      Alert.alert('Error', 'Failed to register user');
     }
   };
-
-  // const [inputValue, setInputValue] = useState('');
-
-  // const handleTextChange = (text) => {
-  //   const numericValue = text.replace(/[^0-9]/g, '');
-  //   setInputValue(numericValue);
-  // };
 
   const handleSignupAndNavigation = () => {
     handleSignUp(); 
@@ -150,7 +123,7 @@ export function Cadastro({navigation}) {
     },
   
     botaoEntrar: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -160,7 +133,7 @@ export function Cadastro({navigation}) {
     },
   
     botaoCriarConta: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',

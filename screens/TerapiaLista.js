@@ -4,7 +4,12 @@ import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
 
 export function TerapiaLista({navigation}){
 
+<<<<<<< HEAD
     const terapeutas1 =[
+=======
+
+    const terapeutas =[
+>>>>>>> 513c49943810b18b5f11189dabd5ec29d0535633
     {
         id: '01',
         desc: ['Fábio Andrade', 'depressão e suicídio']
@@ -20,6 +25,7 @@ export function TerapiaLista({navigation}){
 
     return(
         <View>
+<<<<<<< HEAD
             <FlatList data={terapeutas1} keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <View style={styles.item}><Text style={styles.descricao}>Nome: {item.desc[0]}  Especialidades: {item.desc[1]}</Text>
@@ -31,6 +37,14 @@ export function TerapiaLista({navigation}){
             
             />
             <FlatList data={terapeutas2} keyExtractor={item=>item.id}
+=======
+            <View style={styles.bemVindo}>
+                <Text>
+                Bem-vindo, ! 
+                </Text>
+            </View>
+            <FlatList data={terapeutas} keyExtractor={item=>item.id}
+>>>>>>> 513c49943810b18b5f11189dabd5ec29d0535633
                 renderItem={({item})=>
                 <View style={styles.item}><Text style={styles.descricao}>Nome: {item.desc[0]}  Especialidades: {item.desc[1]}</Text>
                 <Pressable onPress={() => navigation.navigate('Cadastro')}>

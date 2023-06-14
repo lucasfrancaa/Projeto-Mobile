@@ -11,53 +11,39 @@ import {
   Alert, 
   Keyboard
 } from 'react-native';
-import api from '../api';
+import useSWR from 'swr';
 
 export function Login({navigation}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await axios.post('http://localhost:8080/users/login', {
-  //       email,
-  //       password,
-  //     });
-
-  //     if (email && password && response.status === 200) {
-  //       Alert.alert('Success', 'Logged in successfully');
-  //     } else {
-  //       Alert.alert('Error', 'Please enter email and password');
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     Alert.alert('Error', 'An error occurred');
-  //   }
-  // };
+  const { mutate } = useSWR('https://java-unicap-production.up.railway.app/users/login');
 
   const handleLogin = async () => {
     try {
-      const response = await api.post('/users/{id}', {
-        email,
-        password,
+      const response = await fetch('https://java-unicap-production.up.railway.app/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       });
-      if (response.status === 200) {
-        Alert.alert('Success', 'User registered in successfully');
+  
+      const data = await response.json();
+  
+      if (response.ok && data.id !== null) {
+        Alert.alert('Success', 'User logged in successfully');
+        navigation.navigate('TerapiaLista');
+        mutate();
       } else {
-        Alert.alert('Error', 'Failed to register user');
+        Alert.alert('Error', 'Invalid email or password');
       }
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'An error occurred');
+      Alert.alert('Error', 'Failed to log in');
     }
   };
-
-
-    const handleLoginAndNavigation = () => {
-      handleLogin(); 
-      navigation.navigate('Upload'); 
-    };
 
     const handleInputSubmit = () => {
       Keyboard.dismiss();
@@ -99,7 +85,7 @@ export function Login({navigation}) {
             onSubmitEditing={handleInputSubmit}
           />
   
-          <Pressable style={styles.botaoEntrar} onPress={handleLoginAndNavigation}  disabled={!email || !password}>
+          <Pressable style={styles.botaoEntrar} onPress={handleLogin}  disabled={!email || !password}>
             <Text style={styles.textoBotaoEntrarOuCadastrar}>entrar</Text>
           </Pressable>
   
@@ -133,7 +119,7 @@ export function Login({navigation}) {
     },
   
     botaoEntrar: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -143,7 +129,7 @@ export function Login({navigation}) {
     },
   
     botaoCriarConta: {
-      backgroundColor: '#7e325f',
+      backgroundColor: '#533D8B',
       width: '90%',
       height: 45,
       alignItems: 'center',
@@ -178,4 +164,5 @@ export function Login({navigation}) {
       marginTop: 10,
       fontSize: 20,
     },
+    
   });

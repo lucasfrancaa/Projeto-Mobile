@@ -4,18 +4,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Login }  from "./screens/Login";
 import { Cadastro } from "./screens/Cadastro";
 import { Sobre } from "./screens/Sobre";
-import { Diagnostico } from "./screens/Diagnostico";
-import { Upload } from "./screens/Upload";
 import { TerapiaLista } from "./screens/TerapiaLista";
 import { SobreFabio } from "./screens/SobreFabio";
-
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="TerapiaLista">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Login"
             component={Login}
@@ -37,11 +34,14 @@ export default function App() {
             component={TerapiaLista}
             options={{ title: "TerapiaLista" }}
           />
+<<<<<<< HEAD
           <Stack.Screen
             name="SobreFabio"
             component={SobreFabio}
             options={{ title: "SobreFabio" }}
           />
+=======
+>>>>>>> 513c49943810b18b5f11189dabd5ec29d0535633
         </Stack.Navigator>
       </NavigationContainer>
   );
