@@ -7,6 +7,7 @@ import { Sobre } from "./screens/Sobre";
 import { Diagnostico } from "./screens/Diagnostico";
 import { Upload } from "./screens/Upload";
 import { TerapiaLista } from "./screens/TerapiaLista";
+import { SobreFabio } from "./screens/SobreFabio";
 
 
 const Stack = createNativeStackNavigator();
@@ -37,14 +38,9 @@ export default function App() {
             options={{ title: "TerapiaLista" }}
           />
           <Stack.Screen
-            name="Upload"
-            component={Upload}
-            options={{ title: "Upload" }}
-          />
-          <Stack.Screen
-            name="Diagnostico"
-            component={Diagnostico}
-            options={{ title: "Diagnóstico" }}
+            name="SobreFabio"
+            component={SobreFabio}
+            options={{ title: "SobreFabio" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

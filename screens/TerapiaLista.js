@@ -4,47 +4,45 @@ import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
 
 export function TerapiaLista({navigation}){
 
-    const terapeutas =[
+    const terapeutas1 =[
     {
         id: '01',
         desc: ['Fábio Andrade', 'depressão e suicídio']
-    },
+    }
+]
 
+    const terapeutas2 =[
     {
-        id: '02',
+        id: '01',
         desc: ['Maria Auxiliadora', 'questões raciais, autoestima.']
-    },
-
-    {
-        id: '03',
-        desc: ['Júlia Benzaquen', 'bipolaridade, tdah e transtornos em geral.']
-    },
-
-    {
-        id: '04',
-        desc: ['Maurício Sardá', 'identidade de gênero, lgbtqia+, sexualidade, relacionamentos, preconceito.']
-    },
-
-    {
-        id: '05',
-        desc: ['Roseane Borges', 'ansiedade, autocuidado, família, medos, autoconhecimento']
-    },
+    }
 ]
 
     return(
         <View>
-            <FlatList data={terapeutas} keyExtractor={item=>item.id}
+            <FlatList data={terapeutas1} keyExtractor={item=>item.id}
+                renderItem={({item})=>
+                <View style={styles.item}><Text style={styles.descricao}>Nome: {item.desc[0]}  Especialidades: {item.desc[1]}</Text>
+                <Pressable onPress={() => navigation.navigate('SobreFabio')}>
+                <Text>saiba mais</Text>
+          </Pressable></View>
+
+            }
+            
+            />
+            <FlatList data={terapeutas2} keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <View style={styles.item}><Text style={styles.descricao}>Nome: {item.desc[0]}  Especialidades: {item.desc[1]}</Text>
                 <Pressable onPress={() => navigation.navigate('Cadastro')}>
                 <Text>cadastrar</Text>
-          </Pressable>
-                </View>
+          </Pressable></View>
+
             }
             
             />
-            
         </View>
+
+        
         
     )
 }
