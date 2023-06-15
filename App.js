@@ -34,14 +34,12 @@ export default function App() {
             component={TerapiaLista}
             options={{ title: "TerapiaLista" }}
           />
-<<<<<<< HEAD
+
           <Stack.Screen
             name="SobreFabio"
             component={SobreFabio}
             options={{ title: "SobreFabio" }}
           />
-=======
->>>>>>> 513c49943810b18b5f11189dabd5ec29d0535633
         </Stack.Navigator>
       </NavigationContainer>
   );
