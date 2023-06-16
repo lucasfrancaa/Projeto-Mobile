@@ -5,11 +5,21 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Text, 
-  Pressable
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  Linking
 } from 'react-native';
 
 export function SobreFabio({navigation}) {
+
+  const linkExt = (() => {
+    Linking.openURL('https://web.whatsapp.com/');
+  })
+
     return (
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
       <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
       <Text style={styles.titulo}>Fábio Andrade</Text>
@@ -19,12 +29,20 @@ Pessoas que tem ideias suicidas bem como a automutilação também são ajudadas
 Se vc está passando por algum destes problemas, não se sinta só. Estou aqui para ajudar você
       </Text>
       
-      <Pressable onPress={() => navigation.navigate('TerapiaLista')}>
-            <Text>voltar</Text>
+      <Pressable style={styles.botaoVoltar} onPress={(linkExt) }>
+          <Text style={styles.botaoTextoVoltar}>contato</Text>
       </Pressable>
+
+      <Pressable style={styles.botaoVoltar} onPress={() => navigation.navigate('TerapiaLista')}>
+          <Text style={styles.botaoTextoVoltar}>voltar</Text>
+      </Pressable>
+
+      
       
       </View>
       </KeyboardAvoidingView>
+      </ScrollView>
+      </SafeAreaView>
       );
   }
   
@@ -39,8 +57,10 @@ Se vc está passando por algum destes problemas, não se sinta só. Estou aqui p
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      width: '90%',
+      width: '100%',
+      marginBottom: 50
     },
+
     titulo: {
       fontSize: 40,
       fontWeight: "bold",
@@ -84,5 +104,35 @@ Se vc está passando por algum destes problemas, não se sinta só. Estou aqui p
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 7
+  },
+
+  botaoVoltar: {
+    backgroundColor: '#533D8B',
+    width: '50%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7,
+    marginTop: 0,
+    marginBottom:15
+  },
+
+  botaoTextoVoltar:{
+    marginBottom: 0,
+    color: '#fff',
+    fontSize: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 7
+},
+
+  botaoContato: {
+    backgroundColor: '#533D8B',
+    width: '50%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7,
+    marginTop: 10,
   },
   });

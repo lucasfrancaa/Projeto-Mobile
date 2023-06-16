@@ -6,10 +6,15 @@ import {
   KeyboardAvoidingView,
   Text, 
   Pressable,
-  SafeAreaView, ScrollView, StatusBar
+  SafeAreaView, ScrollView, StatusBar, Linking
 } from 'react-native';
 
 export function SobreJulia({navigation}) {
+
+  const linkExt = (() => {
+    Linking.openURL('https://web.whatsapp.com/');
+  })
+
     return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
@@ -29,8 +34,12 @@ export function SobreJulia({navigation}) {
       para que possamos trabalhar juntos no que precise.
       </Text>
       
-      <Pressable onPress={() => navigation.navigate('TerapiaLista')}>
-            <Text>voltar</Text>
+      <Pressable style={styles.botaoVoltar} onPress={(linkExt) }>
+          <Text style={styles.botaoTextoVoltar}>contato</Text>
+      </Pressable>
+      
+      <Pressable style={styles.botaoVoltar} onPress={() => navigation.navigate('TerapiaLista')}>
+          <Text style={styles.botaoTextoVoltar}>voltar</Text>
       </Pressable>
       
       </View>
@@ -97,5 +106,35 @@ export function SobreJulia({navigation}) {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 7
+  },
+
+  botaoVoltar: {
+    backgroundColor: '#533D8B',
+    width: '50%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7,
+    marginTop: 0,
+    marginBottom:15
+  },
+
+  botaoTextoVoltar:{
+    marginBottom: 0,
+    color: '#fff',
+    fontSize: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 7
+},
+
+  botaoContato: {
+    backgroundColor: '#533D8B',
+    width: '50%',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7,
+    marginTop: 10,
   },
   });
