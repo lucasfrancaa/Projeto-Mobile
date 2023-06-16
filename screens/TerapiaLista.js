@@ -182,7 +182,7 @@ const styles = {
   },
   botaoSaibaMais: {
     backgroundColor: '#533D8B',
-    height: 35,
+    minheight: 37,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 7,
@@ -197,7 +197,7 @@ const styles = {
   },
   botaoArquivar: {
     backgroundColor: '#A9A9A9',
-    height: 35,
+    minheight: 37,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 7,
