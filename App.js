@@ -9,11 +9,13 @@ import { SobreFabio } from "./screens/SobreFabio";
 import { SobreMaria } from "./screens/SobreMaria";
 import { SobreJulia } from "./screens/SobreJulia";
 import { SobreMauricio } from "./screens/SobreMauricio";
+import { UserProvider } from "./contexts/UserContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <UserProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
@@ -32,39 +34,38 @@ export default function App() {
             component={Sobre}
             options={{ title: "Sobre" }}
           />
+
           <Stack.Screen
             name="TerapiaLista"
             component={TerapiaLista}
-            options={{ title: " " }}
+            options={{ title: "Lista de Terapeutas" }}
           />
 
           <Stack.Screen
             name="SobreFabio"
             component={SobreFabio}
-            options={{ title: " " }}
+            options={{ title: "Fabio" }}
           />
 
           <Stack.Screen
             name="SobreMaria"
             component={SobreMaria}
-            options={{ title: " " }}
+            options={{ title: "Maria" }}
           />      
 
           <Stack.Screen
             name="SobreJulia"
             component={SobreJulia}
-            options={{ title: " " }}
+            options={{ title: "Julia" }}
           />
 
           <Stack.Screen
             name="SobreMauricio"
             component={SobreMauricio}
-            options={{ title: " " }}
+            options={{ title: "Mauricio" }}
           />        
-
         </Stack.Navigator>
-
-        
       </NavigationContainer>
+    </UserProvider>
   );
 }

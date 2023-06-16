@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -12,8 +12,13 @@ import {
   Alert
 } from 'react-native';
 import useSWR from 'swr';
+import { UserContext } from '../contexts/UserContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export function Cadastro({navigation}) {
+
+  const { setUserName } = useContext(UserContext);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -34,6 +39,8 @@ export function Cadastro({navigation}) {
 
       Alert.alert('Success', 'User registered successfully');
       mutate(); 
+      setUserName(name, setName);
+      await AsyncStorage.setItem('userName', name);
     } catch (error) {
       console.error(error);
       Alert.alert('Error', 'Failed to register user');

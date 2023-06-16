@@ -14,15 +14,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSAppTransportSecurity": {
-          "NSAllowsArbitraryLoads": true
-        }
-      }
+      "bundleIdentifier": "com.example.app",
+      "supportsTablet": true
     },
     "android": {
+      "package": "com.example.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,6 +41,6 @@
         "projectId": "f3fec10a-6fc7-4720-9933-17690ab61549"
       }
     },
-    "owner": "lucas.franca"
+    "scheme": "myapp"
   }
 }

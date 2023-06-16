@@ -1,27 +1,26 @@
 import * as React from 'react';
+import { View, StyleSheet, KeyboardAvoidingView, Text, Pressable, SafeAreaView, ScrollView, StatusBar, Linking, Image } from 'react-native';
+import { Button } from 'react-native-paper';
 
-import {
-  View,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Text, 
-  Pressable,
-  SafeAreaView, ScrollView, StatusBar, Linking
-} from 'react-native';
-
-export function SobreJulia({navigation}) {
-
-  const linkExt = (() => {
+export function SobreJulia({ navigation }) {
+  const handleContactPress = () => {
     Linking.openURL('https://web.whatsapp.com/');
-  })
+  };
 
-    return (
+  return (
     <SafeAreaView style={styles.container}>
-    <ScrollView style={styles.scrollView}>
-      <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.container}>
-      <Text style={styles.titulo}>Julia Benzaquen</Text>
-      <Text style={styles.texto}>Me chamo Julia, sou psicóloga clínica e
+      <ScrollView style={styles.scrollView}>
+        <KeyboardAvoidingView style={styles.background}>
+          <View style={styles.container}>
+            <Text style={styles.titulo}>Julia Benzaquen</Text>
+            <Image
+            source={{
+              uri: 'https://i.postimg.cc/SxBxFGk0/mulher-lider.jpg"',
+            }}
+            style={styles.imagem}
+          />
+            <Text style={styles.texto}>
+            Me chamo Julia, sou psicóloga clínica e
       mestra em psicologia formada pela Universidade Federal de Alagoas,
       e atuo no atendimento a adolescentes, adultos e idosos a partir da
       Psicanálise. Possuo experiência em atendimento psicológico on-line
@@ -32,82 +31,65 @@ export function SobreJulia({navigation}) {
       de autoaceitação e autoestima. 
       Me encontro à disposição para te escutar de maneira livre de julgamentos,
       para que possamos trabalhar juntos no que precise.
-      </Text>
-      
-      <Pressable style={styles.botaoVoltar} onPress={(linkExt) }>
-          <Text style={styles.botaoTextoVoltar}>contato</Text>
-      </Pressable>
-      
-      <Pressable style={styles.botaoVoltar} onPress={() => navigation.navigate('TerapiaLista')}>
-          <Text style={styles.botaoTextoVoltar}>voltar</Text>
-      </Pressable>
-      
-      </View>
-      </KeyboardAvoidingView>
+            </Text>
 
+            <Button
+              mode="contained"
+              style={styles.botaoContato}
+              onPress={handleContactPress}
+            >
+              Contato
+            </Button>
+
+            <Button
+              mode="contained"
+              style={styles.botaoVoltar}
+              onPress={() => navigation.navigate('TerapiaLista')}
+            >
+              Voltar
+            </Button>
+          </View>
+        </KeyboardAvoidingView>
       </ScrollView>
     </SafeAreaView>
-      );
-  }
-  
-  const styles = StyleSheet.create({
-    background: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#FFFFFF',
-    },
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%',
-    },
-    titulo: {
-      fontSize: 40,
-      fontWeight: "bold",
-      textAlign: 'center',
-      marginTop: 25
-    },
-    texto:{
-      fontSize: 15,
-      marginTop: 20,
-      marginLeft: 15,
-      marginRight: 15,
-      textAlign: 'justify',
-      marginBottom: 30,
-    },
-    botaoEntrar: {
-      backgroundColor: '#7e325f',
-      width: '90%',
-      height: 45,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 7,
-      marginBottom: 10,
-    },
-  
-    botaoCriarConta: {
-      backgroundColor: '#7e325f',
-      width: '90%',
-      height: 45,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 7,
-      marginBottom: 10,
-      marginTop: 10,
-      marginLeft: 18,
-      marginRight: 15,
-    },
-    textoBotaoEntrarOuCadastrar:{
-      marginBottom: 0,
-      color: '#fff',
-      fontSize: 15,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 7
-  },
+  );
+}
 
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    marginBottom: 100,
+  },
+  titulo: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 25,
+  },
+  imagem: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    marginTop: 15,
+    marginBottom: 30,
+  },
+  texto: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 15,
+    marginRight: 15,
+    textAlign: 'justify',
+    marginBottom: 30,
+  },
   botaoVoltar: {
     backgroundColor: '#533D8B',
     width: '50%',
@@ -116,18 +98,8 @@ export function SobreJulia({navigation}) {
     justifyContent: 'center',
     borderRadius: 7,
     marginTop: 0,
-    marginBottom:15
+    marginBottom: 15,
   },
-
-  botaoTextoVoltar:{
-    marginBottom: 0,
-    color: '#fff',
-    fontSize: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 7
-},
-
   botaoContato: {
     backgroundColor: '#533D8B',
     width: '50%',
@@ -136,5 +108,8 @@ export function SobreJulia({navigation}) {
     justifyContent: 'center',
     borderRadius: 7,
     marginTop: 10,
+    marginBottom: 15,
   },
-  });
+});
+
+export default SobreJulia;
